@@ -1,67 +1,155 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spyman Gaming</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SPYMAN GAMING — Home</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <!-- Background Glow -->
-  <div class="bg-glow"></div>
-
-  <!-- Navbar -->
-  <nav class="navbar">
-    <h2 class="logo">SPYMAN GAMING</h2>
-    <ul class="nav-links">
-      <li>Home</li>
-      <li>Games</li>
-      <li>Tournaments</li>
-      <li>Store</li>
-      <li>Contact</li>
-    </ul>
-    <button class="join-btn">Join Now</button>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1>FUTURISTIC GAMING</h1>
-    <p>Enter the cyber arena. Fight, conquer, and dominate your path to glory.</p>
-
-    <!-- Animated Mini Banners -->
-    <div class="mini-banners">
-      <div class="banner">GTA SA RP</div>
-      <div class="banner">BGMI LIVE</div>
-      <div class="banner">DAILY SHORTS</div>
+  <!-- Loading overlay -->
+  <div id="loader" class="loader">
+    <div class="loader-content">
+      <div class="logo-anim" id="logo-anim">
+        <!-- SVG animated logo (also in CSS) -->
+        <svg viewBox="0 0 200 200" width="120" height="120" aria-hidden>
+          <defs>
+            <linearGradient id="g" x1="0" x2="1">
+              <stop offset="0" stop-color="#ff3b3b"/>
+              <stop offset="1" stop-color="#ff8a00"/>
+            </linearGradient>
+          </defs>
+          <circle cx="100" cy="100" r="80" stroke="url(#g)" stroke-width="6" fill="black"/>
+          <path d="M60 120 L100 60 L140 120 Z" fill="url(#g)"/>
+        </svg>
+      </div>
+      <p>SPYMAN GAMING</p>
+      <div class="loader-bar"><div></div></div>
     </div>
-  </section>
+  </div>
 
-  <!-- Stats Section -->
-  <section class="stats">
-    <div class="stat-box">500+<br>Active Players</div>
-    <div class="stat-box">30+<br>Tournaments</div>
-    <div class="stat-box">150+<br>Teams</div>
-  </section>
+  <!-- Particle background canvas -->
+  <canvas id="particles"></canvas>
 
-  <!-- About Section -->
-  <section class="about">
-    <h2>ABOUT SPYMAN GAMING</h2>
-    <p>
-      Spyman Gaming is known for intense GTA SA RP adventures and high-energy BGMI live streams.
-      With unique gameplay and unmatched skills, he has built a massive and fast-growing audience.
-    </p>
-  </section>
-
-  <!-- Games Section -->
-  <section class="games">
-    <h2>FEATURED GAMES</h2>
-    <div class="game-list">
-      <div class="game-card">GTA SA RP</div>
-      <div class="game-card">BGMI</div>
-      <div class="game-card">PUBG MOBILE</div>
+  <!-- Navigation -->
+  <header class="nav">
+    <div class="nav-left">
+      <div class="brand">
+        <!-- small animated SVG logo -->
+        <svg viewBox="0 0 100 100" width="42" height="42" class="brand-svg" aria-hidden>
+          <circle cx="50" cy="50" r="45" stroke="#00ffb3" stroke-width="4" fill="transparent" />
+          <path d="M32 64 L50 28 L68 64 Z" fill="#00ffb3"/>
+        </svg>
+        <span class="brand-name">SPYMAN GAMING</span>
+      </div>
     </div>
-  </section>
+
+    <nav class="nav-right">
+      <ul class="menu">
+        <li>Home</li>
+        <li>Games</li>
+        <li>Tournaments</li>
+        <li>Store</li>
+        <li>Contact</li>
+      </ul>
+      <button id="joinBtn" class="btn">Join</button>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <h1 class="hero-title">FUTURISTIC GAMING</h1>
+        <p class="hero-sub">GTA SA RP • BGMI Live • Shorts & Highlights</p>
+
+        <div class="hero-visual">
+          <img id="heroImage" src="/mnt/data/7c1592b9-58bd-46c0-81c2-040d846b345a.png" alt="Spyman hero" />
+          <div class="live-pill" id="livePill"><span class="dot"></span> LIVE</div>
+        </div>
+
+        <!-- Animated mini banners -->
+        <div class="mini-banners" id="miniBanners">
+          <div class="mini banner-1">GTA SA RP</div>
+          <div class="mini banner-2">BGMI LIVE</div>
+          <div class="mini banner-3">DAILY SHORTS</div>
+        </div>
+
+        <!-- slider / showcase -->
+        <div class="slider" id="slider">
+          <div class="slides">
+            <div class="slide">
+              <img src="/mnt/data/7c1592b9-58bd-46c0-81c2-040d846b345a.png" alt="">
+              <div class="slide-caption">GTA SA — Epic RP Moment</div>
+            </div>
+            <div class="slide">
+              <img src="/mnt/data/7c1592b9-58bd-46c0-81c2-040d846b345a.png" alt="">
+              <div class="slide-caption">BGMI — Clutch Ace</div>
+            </div>
+            <div class="slide">
+              <img src="/mnt/data/7c1592b9-58bd-46c0-81c2-040d846b345a.png" alt="">
+              <div class="slide-caption">Shorts — Funny Highlights</div>
+            </div>
+          </div>
+          <div class="slider-controls">
+            <button id="prev">‹</button>
+            <button id="next">›</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+      <div class="stat">500+ <small>Active Players</small></div>
+      <div class="stat">30+ <small>Tournaments</small></div>
+      <div class="stat">150+ <small>Teams</small></div>
+    </section>
+
+    <!-- About / Games / YouTube live box -->
+    <section class="panels">
+      <div class="panel about">
+        <h2>ABOUT SPYMAN GAMING</h2>
+        <p>Spyman Gaming streams GTA SA Roleplay and high-energy BGMI matches. Cinematic RP stories, wild cheeky moments and top-ranked gameplay.</p>
+      </div>
+
+      <div class="panel yt-live">
+        <h3>YouTube</h3>
+        <div class="yt-box">
+          <div class="yt-header">
+            <img src="/mnt/data/7c1592b9-58bd-46c0-81c2-040d846b345a.png" alt="" />
+            <div>
+              <strong>Spyman Gaming</strong>
+              <div class="sub">GTA SA RP • BGMI</div>
+            </div>
+          </div>
+          <div class="yt-body">
+            <div id="liveIndicator" class="live-indicator offline">OFFLINE</div>
+            <div class="yt-actions">
+              <button id="followBtn" class="btn small">Subscribe</button>
+              <a class="btn small ghost" href="#" target="_blank">Visit Channel</a>
+            </div>
+            <small class="hint">To show real live status, plug in the YouTube Data API and set <code>isLive</code>.</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel games">
+        <h3>FEATURED GAMES</h3>
+        <div class="game-grid">
+          <div class="game">GTA SA RP</div>
+          <div class="game">BGMI</div>
+          <div class="game">Custom Events</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div>© <span id="year"></span> SPYMAN GAMING</div>
+    <div class="socials">Twitter • YouTube • Instagram • Discord</div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
